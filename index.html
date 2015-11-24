@@ -14,13 +14,13 @@
   <body>
 
     <!-- HEADER -->
-    <div style = "width:100%; height: 80px; background-color: #222">
+    <div style = "width:100%; height: 100px; background-color: #222">
           <h1 id="project_title">Pixel monster</h1>
           <h2 id="project_tagline"></h2>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
+    <div style="width:100%; height:calc(100% - 100px);">
     
 	<!-- MAIN CONTENT -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -32,7 +32,7 @@
 	<script>
 		var screenHeight = screen.height;
 		var monsterBox = $("body").find("#monsterBox");
-		monsterBox.css("height:" + screenHeight - 80 + "px");
+		// monsterBox.css("height:" + screenHeight - 80 + "px");
 		for(var y=0; y<60; y++){
 			for(var x=0; x<60; x++){	
 				monsterBox.append("<div style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>")
