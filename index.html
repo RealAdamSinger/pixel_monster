@@ -20,7 +20,7 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <div style="width:100%; height:calc(100% - 100px);">
+    <div id="main" style="width:100%; height:calc(100% - 100px);">
     
 	<!-- MAIN CONTENT -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -32,13 +32,19 @@
 	<script>
 		var screenHeight = screen.height;
 		var monsterBox = $("body").find("#monsterBox");
-		// monsterBox.css("height:" + screenHeight - 80 + "px");
 		for(var y=0; y<60; y++){
 			for(var x=0; x<60; x++){	
 				monsterBox.append("<div style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>")
         	}	
   			monsterBox.append("</br>");
 		}
+		
+		$(function(){
+		  $('#main').css({ height: ($(window).innerHeight()-100) });
+		  $(window).resize(function(){
+		   $('#main').css({ height: ($(window).innerHeight()-100) });
+		  });
+		});
 	</script>
     
 
