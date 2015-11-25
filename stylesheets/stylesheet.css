@@ -1,66 +1,56 @@
-/*******************************************************************************
-Slate Theme for GitHub Pages
-by Jason Costello, @jsncostello
-*******************************************************************************/
+<!DOCTYPE html>
+<html>
 
-@import url(github-light.css);
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="description" content="Pixel monster : ">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="./modules/slate/dist/js/slate.js"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./modules/slate/dist/css/slate.min.css">
 
-/*******************************************************************************
-MeyerWeb Reset
-*******************************************************************************/
+	<title>Pixel monster</title>
+</head>
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
-}
+<body>
+	<div id="main" style="width:100%;">
+		<!-- HEADER -->
+		<div style="width:100%; height: 100px; background-color: #222; vertical-align:middle;position:relative;">
+			<h1 id="project_title" style="color: #eee; display:inline-block; height:100%; padding:3px; vertical-align:middle;">
+				Pixel Monster
+				</h1>
+			<div style="width:75%; height: 100px; position:absolute; color: #eee; text-align: right; right:0; top:0;">
+				<label>
+					Color Picker</br>
+					<input type="text" class="item-color item-color-normal" name="color-1" value="#000000">
+				</label>
+			</div>
+		</div>
 
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-* { 
-  box-sizing: border-box;
-  padding:0px;
-  margin:0px;
-}
-#monsterBox{
-  background-color:#5cb85c;
- background-image:
-      -moz-linear-gradient(45deg, #337ab7 25%, #5cb85c 25%), 
-      -moz-linear-gradient(-45deg, #337ab7 25%, #5cb85c 25%),
-      -moz-linear-gradient(45deg, #5cb85c 75%, #337ab7 75%),
-      -moz-linear-gradient(-45deg, #5cb85c 75%, #337ab7 75%);
-    background-image:
-      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #337ab7), color-stop(.25, transparent)), 
-      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #337ab7), color-stop(.25, transparent)),
-      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #337ab7)),
-      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #337ab7));
+		<!-- MAIN CONTENT -->
+		<div style="width:100%; height:calc(100% - 100px); overflow: scroll; text-align:center;">
+			<div id="monsterBox" style="border: solid #222 1px; display:inline-block; white-space:nowrap;">
+			</div>
+		</div>
 
-    -moz-background-size:40px 40px;
-    background-size:40px 40px;
-    -webkit-background-size:40px 40px; /* override value for shitty webkit */
-    
-    background-position:0 0, 40px 0, 40px -40px, 0px 40px;
-}
-#main{
-  background:#222;
-}
-.item-styled-color {
-  background:none !important;
-}
+		<script>
+			var screenHeight = screen.height;
+			var monsterBox = $("body").find("#monsterBox");
+			for(var y=0; y<60; y++){
+				for(var x=0; x<60; x++){	
+					monsterBox.append("<div style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>")
+				}	
+				monsterBox.append("</br>");
+			}
+			
+			
+				$("body").find('#main').css({ height: ($(window).innerHeight())});
+				$(window).resize(function(){
+					$("body").find('#main').css({ height: ($(window).innerHeight()) });
+				});
+		</script>
+
+</body>
+
+</html>
