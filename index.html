@@ -20,16 +20,16 @@
 			<h1 id="project_title" style="color: #eee; display:inline-block; height:100%; padding:3px; vertical-align:middle; font-weight:bold;">
 				Pixel Monster
 				</h1>
-			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:top;">
+			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:middle;">
 				<div style="border: 5px solid #000;display:inline-block;">
-					<div id="littleBox" style="display:inline-block; white-space:nowrap; background:#aaa;">
+					<div id="littleBox" style="display:inline-block; white-space:nowrap; background:#aaa; line-height:0;">
 					</div>
 				</div>
 			</div>
 			&nbsp;
-			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:top;">
+			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:middle;">
 				<div style="border: 5px solid #000;display:inline-block;">
-					<div id="littleBoxBW" style="display:inline-block; white-space:nowrap; background:#aaa;">
+					<div id="littleBoxBW" style="display:inline-block; white-space:nowrap; background:#aaa;line-height:0;">
 					</div>
 				</div>
 			</div>
@@ -77,8 +77,8 @@
 				for(var x=0; x<60; x++){	
 					var pos = "x"+ x +"y"+ y;
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
-					littleBox.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
-					littleBoxBW.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
+					littleBox.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>");
+					littleBoxBW.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>");
 					monsterBox.find("#"+pos).click(function(e) {
 						var cell = $(e.target);
 						if(cell.css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
