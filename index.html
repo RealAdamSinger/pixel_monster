@@ -71,7 +71,7 @@
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
 					$("#"+pos).click(function(e) {
 						var cell = $(e.target);
-						if(cell.css("background-color") != "#" + color.val().substring(2)){
+						if(cell.css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
 							cell.css({
 								"background-color": "#" + color.val().substring(2)
 							});	
