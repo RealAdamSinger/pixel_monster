@@ -1,54 +1,36 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Pixel monster : ">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="./modules/slate/dist/js/slate.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="./modules/slate/dist/css/slate.min.css">
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="description" content="Pixel monster : ">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="./modules/slate/dist/js/slate.js"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./modules/slate/dist/css/slate.min.css">
 
-    <title>Pixel monster</title>
-  </head>
+	<title>Pixel monster</title>
+</head>
 
-  <body>
-<div id="main" style= "width:100%;">
-    <!-- HEADER -->
-    <div style = "width:100%; height: 100px; background-color: #222">
-          <h1 id="project_title">Pixel monster</h1>
-          <h2 id="project_tagline"></h2>
-          <div class="item-container">
-  <div class="item-container-header">Date, Time, Colorpickers</div>
-  <div class="item-container-content">
-    <label class="item">
-      Example Item
-      <input type="time" class="item-time" name="time-1" value="18:35">
-    </label>
-    <label class="item">
-      Example Item
-      <input type="date" class="item-date" name="date-1" value="2015-02-12">
-    </label>
-     <label class="item">
-      Normal Color Picker
-      <input type="text" class="item-color item-color-normal" name="color-1" value="#000000">
-    </label>
-    <label class="item">
-      Sunny Color Picker
-      <input type="text" class="item-color item-color-sunny" name="color-2" value="#000000">
-    </label>
-  </div>
-</div>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div style="width:100%; height:calc(100% - 100px); overflow: scroll; text-align:center;">
-		<div id="monsterBox" style="border: solid #222 1px; display:inline-block;white-space:nowrap;">
+<body>
+	<div id="main" style="width:100%;">
+		<!-- HEADER -->
+		<div style="width:100%; height: 100px; background-color: #222">
+			<h1 id="project_title" style="color: #eee; display:inlne-block;">Pixel monster</h1>
+			<label style="display:inlne-block; width:50%; height:100%;">
+				Color Picker
+				<input type="text" class="item-color item-color-normal" name="color-1" value="#000000">
+			</label>
 		</div>
-	</div>
-	<script>
-		var screenHeight = screen.height;
+
+		<!-- MAIN CONTENT -->
+		<div style="width:100%; height:calc(100% - 100px); overflow: scroll; text-align:center;">
+			<div id="monsterBox" style="border: solid #222 1px; display:inline-block;white-space:nowrap;">
+			</div>
+		</div>
+		<script>
+			var screenHeight = screen.height;
 		var monsterBox = $("body").find("#monsterBox");
 		for(var y=0; y<60; y++){
 			for(var x=0; x<60; x++){	
@@ -63,8 +45,9 @@
 		   $("body").find('#main').css({ height: ($(window).innerHeight()) });
 		  });
 		});
-	</script>
-    
+		</script>
 
-  </body>
+
+</body>
+
 </html>
