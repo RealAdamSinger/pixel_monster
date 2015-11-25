@@ -22,7 +22,12 @@
 				</h1>
 			<div style="border: 1px solid #aaa;display:inline-block;">
 				<div style="border: 5px solid #000;display:inline-block;">
-					<div id="littleMonster" style="display:inline-block; height:60px; width:60px; vertical-align:middle;background:#aaa;">
+					<div id="littleBox" style="display:inline-block; height:60px; width:60px; vertical-align:middle;background:#aaa;">
+					</div>
+				</div> 
+				&nbsp;
+				<div style="border: 5px solid #000;display:inline-block;">
+					<div id="littleBoxBW" style="display:inline-block; height:60px; width:60px; vertical-align:middle;background:#aaa;">
 					</div>
 				</div>
 			</div>
@@ -64,21 +69,31 @@
 			
 			var screenHeight = screen.height;
 			var monsterBox = $("body").find("#monsterBox");
+			var littleBox = $("body").find("#littleBox");
+			var littleBoxBW = $("body").find("#littleBoxBW");
 			var color = $("body").find("#color");
 			for(var y=0; y<60; y++){
 				for(var x=0; x<60; x++){	
 					var pos = "x"+ x +"y"+ y;
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
+					littleBox.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
+					littleBoxBW.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
 					$("#"+pos).click(function(e) {
 						var cell = $(e.target);
 						if(cell.css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
 							cell.css({
 								"background-color": "#" + color.val().substring(2)
 							});	
+							littleBox.find($(e.target).id).css({
+								"background-color": "#" + color.val().substring(2)
+							});	
 						}else{
 							cell.css({
 								"background-color": "transparent"
 							});
+							littleBox.find($(e.target).id).css({
+									"background-color": "transparent"
+							});	
 						}
 						
 						console.error(color.val());
