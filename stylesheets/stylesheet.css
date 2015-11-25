@@ -17,15 +17,13 @@
 	<div id="main" style="width:100%;">
 		<!-- HEADER -->
 		<div style="width:100%; height: 100px; background-color: #222; vertical-align:middle;">
-			<h1 id="project_title" style="color: #eee; display:inline-block; height:100%;  vertical-align:middle;">Pixel monster</h1>
-
-			<div class="item-container-content" style="display:inline-block; vertical-align:middle;">
-				<label>
-					Color Picker
-					<input type="text" class="item-color item-color-normal" name="color-1" value="#000000">
-				</label>
-			</div>
-
+			<h1 id="project_title" style="color: #eee; display:inline-block; height:100%; padding:3px; vertical-align:middle;">
+				Pixel Monster
+				</h1>
+			<label>
+				Color Picker
+				<input type="text" class="item-color item-color-normal" name="color-1" value="#000000">
+			</label>
 		</div>
 
 		<!-- MAIN CONTENT -->
