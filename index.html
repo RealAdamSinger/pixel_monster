@@ -76,9 +76,9 @@
 			for(var y=0; y<60; y++){
 				for(var x=0; x<60; x++){	
 					var pos = "x"+ x +"y"+ y;
-					monsterBox.append("<span id='" + pos + "' style='width:40px; height:40px; vertical-align:top;'></span>");
-					littleBox.append("<span id='" + pos + "' style='width:1px; height:1px; vertical-align:top;'></span>");
-					littleBoxBW.append("<span id='" + pos + "' style='width:1px; height:1px; vertical-align:top;'></span>");
+					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
+					littleBox.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
+					littleBoxBW.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
 					monsterBox.find("#"+pos).click(function(e) {
 						var cell = $(e.target);
 						if(cell.css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
