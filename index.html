@@ -45,14 +45,11 @@
 			
 			$.cssHooks.backgroundColor = {
 				get: function(elem) {
-					if (elem.currentStyle)
+					if (elem.currentStyle){
 						var bg = elem.currentStyle["backgroundColor"];
-						if(!bg){
-							return null;
-						}
-					else if (window.getComputedStyle)
-						var bg = document.defaultView.getComputedStyle(elem,
-							null).getPropertyValue("background-color");
+					} else if (window.getComputedStyle){
+						var bg = document.defaultView.getComputedStyle(elem, null).getPropertyValue("background-color");
+					}
 					if (bg.search("rgb") == -1)
 						return bg;
 					else {
