@@ -50,7 +50,9 @@
 					var pos = "x"+ x +"y"+ y;
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
 					$("#"+pos).click(function() {
-						console.error(color.val());
+						monsterBox.find("#"+pos).css({
+							background: color.val()
+						});
 					});
 				}	
 				monsterBox.append("</br>");
