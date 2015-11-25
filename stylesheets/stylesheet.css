@@ -66,4 +66,5 @@ footer, header, hgroup, menu, nav, section {
 }
 item-styled-color .value {
     bottom: 10px !important;
+    top: auto!important;
 }
