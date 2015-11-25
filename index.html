@@ -50,7 +50,7 @@
 					var pos = "x"+ x +"y"+ y;
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
 					$("#"+pos).click(function(e) {
-						e.target.css({
+						$(e.target).css({
 							"background-color": color.val()
 						});
 						console.error(color.val());
