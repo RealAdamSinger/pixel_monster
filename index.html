@@ -29,7 +29,7 @@
 			<div style="width:90%; height: 80px; position:absolute; color: #eee; text-align: right; right:10px; top:10px; padding-right:5px;">
 				<label>
 					Color Picker</br>
-					<input type="text" class="item-color item-color-normal" name="color-1" value="#000000">
+					<input id="color" type="text" class="item-color item-color-normal" name="color-1" value="#000000">
 				</label>
 			</div>
 		</div>
@@ -44,9 +44,14 @@
 		<script>
 			var screenHeight = screen.height;
 			var monsterBox = $("body").find("#monsterBox");
+			var color = $("body").find("#color");
 			for(var y=0; y<60; y++){
 				for(var x=0; x<60; x++){	
-					monsterBox.append("<div style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>")
+					var pos = "x"+ x +"y"+ y;
+					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
+					$("#"+pos).click(function() {
+						console.error(color.val());
+					});
 				}	
 				monsterBox.append("</br>");
 			}
