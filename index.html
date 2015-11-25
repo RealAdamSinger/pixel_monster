@@ -83,14 +83,14 @@
 							cell.css({
 								"background-color": "#" + color.val().substring(2)
 							});	
-							littleBox.children("#" + e.target.id).css({
+							littleBox.children("#" + e.target.id).first().css({
 								"background-color": "#" + color.val().substring(2)
 							});	
 						}else{
 							cell.css({
 								"background-color": "transparent"
 							});
-							littleBox.children("#" + e.target.id).css({
+							littleBox.children("#" + e.target.id).first().css({
 									"background-color": "transparent"
 							});	
 						}
