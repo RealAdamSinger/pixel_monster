@@ -68,3 +68,8 @@ footer, header, hgroup, menu, nav, section {
     bottom: 10px !important;
     top: auto !important;
 }
+body{
+    margin: 0;
+  padding: 0;
+  border: 0;
+}
