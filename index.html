@@ -29,7 +29,7 @@
 			<div style="width:90%; height: 80px; position:absolute; color: #eee; text-align: right; right:10px; top:10px; padding-right:5px;">
 				<label>
 					Color Picker</br>
-					<input id="color" type="text" class="item-color item-color-normal" name="color-1" value="#000000">
+					<input id="color" type="text" class="item-color item-color-normal" name="color-1" value="0x000000">
 				</label>
 			</div>
 		</div>
@@ -52,13 +52,13 @@
 					$("#"+pos).click(function(e) {
 						var cell = $(e.target);
 						if(cell.css("background-color") != "#" + color.val().substring(2)){
-						cell.css({
-							"background-color": "#" + color.val().substring(2)
-						});	
+							cell.css({
+								"background-color": "#" + color.val().substring(2)
+							});	
 						}else{
 							cell.css({
-							"background-color": "none"
-						});
+								"background-color": "transparent"
+							});
 						}
 						
 						console.error(color.val());
