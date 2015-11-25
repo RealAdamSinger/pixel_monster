@@ -63,4 +63,5 @@ footer, header, hgroup, menu, nav, section {
 }
 .color-box-wrap{
 max-width:500px;
+max-height:500px;
 }
