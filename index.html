@@ -82,8 +82,8 @@
 					store[pos].push($("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>"));
 					
 					store[pos][0].appendTo(monsterBox);
-					store[pos][2].appendTo(littleBox);
-					store[pos][3].appendTo(littleBoxBW);
+					store[pos][1].appendTo(littleBox);
+					store[pos][2].appendTo(littleBoxBW);
 					
 					store[pos][0].click(function(e) {
 						var el = store[e.target.id];
