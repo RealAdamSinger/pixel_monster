@@ -24,8 +24,10 @@
 				<div style="border: 5px solid #000;display:inline-block;">
 					<div id="littleBox" style="display:inline-block; height:60px; width:60px; vertical-align:middle;background:#aaa;">
 					</div>
-				</div> 
-				&nbsp;
+				</div>
+			</div>
+			&nbsp;
+			<div style="border: 1px solid #aaa;display:inline-block;">
 				<div style="border: 5px solid #000;display:inline-block;">
 					<div id="littleBoxBW" style="display:inline-block; height:60px; width:60px; vertical-align:middle;background:#aaa;">
 					</div>
@@ -47,7 +49,6 @@
 			</div>
 		</div>
 		<script>
-			
 			$.cssHooks.backgroundColor = {
 				get: function(elem) {
 					if (elem.currentStyle){
@@ -78,7 +79,7 @@
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
 					littleBox.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
 					littleBoxBW.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;'></div>");
-					$("#"+pos).click(function(e) {
+					monsterBox.find("#"+pos).click(function(e) {
 						var cell = $(e.target);
 						if(cell.css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
 							cell.css({
