@@ -50,7 +50,7 @@
 					} else if (window.getComputedStyle){
 						var bg = document.defaultView.getComputedStyle(elem, null).getPropertyValue("background-color");
 					}
-					if (bg.search("rgb(") == -1)
+					if (bg.search("rgb") == -1 || bg.search("rgba") != -1)
 						return bg;
 					else {
 						bg = bg.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
