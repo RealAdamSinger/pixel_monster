@@ -40,7 +40,7 @@ footer, header, hgroup, menu, nav, section {
   margin:0px;
 }
 #monsterBox{
-  background-color:#bbb;
+  background-color:#ddd;
  background-image:
       -moz-linear-gradient(45deg, #bbb 25%, #ccc 25%), 
       -moz-linear-gradient(-45deg, #bbb 25%, #ccc 25%),
