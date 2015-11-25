@@ -40,17 +40,17 @@ footer, header, hgroup, menu, nav, section {
   margin:0px;
 }
 #monsterBox{
-  background-color:#5cb85c;
+  /*background-color:#5cb85c;*/
  background-image:
-      -moz-linear-gradient(45deg, #888 25%, #ccc 25%), 
-      -moz-linear-gradient(-45deg, #888 25%, #ccc 25%),
-      -moz-linear-gradient(45deg, #ccc 75%, #888 75%),
-      -moz-linear-gradient(-45deg, #ccc 75%, #888 75%);
+      -moz-linear-gradient(45deg, #bbb 25%, #ccc 25%), 
+      -moz-linear-gradient(-45deg, #bbb 25%, #ccc 25%),
+      -moz-linear-gradient(45deg, #ccc 75%, #bbb 75%),
+      -moz-linear-gradient(-45deg, #ccc 75%, #bbb 75%);
     background-image:
-      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #888), color-stop(.25, transparent)), 
-      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #888), color-stop(.25, transparent)),
-      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #888)),
-      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #888));
+      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #bbb), color-stop(.25, transparent)), 
+      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #bbb), color-stop(.25, transparent)),
+      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #bbb)),
+      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #bbb));
 
     -moz-background-size:40px 40px;
     background-size:40px 40px;
