@@ -49,8 +49,8 @@
 				for(var x=0; x<60; x++){	
 					var pos = "x"+ x +"y"+ y;
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
-					$("#"+pos).click(function() {
-						monsterBox.find("#"+pos).css({
+					$("#"+pos).click(function(e) {
+						e.target.css({
 							"background-color": color.val()
 						});
 						console.error(color.val());
