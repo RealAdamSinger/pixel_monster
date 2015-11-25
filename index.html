@@ -85,14 +85,14 @@
 							cell.css({
 								"background-color": "#" + color.val().substring(2)
 							});	
-							littleBox.find(e.target.id).css({
+							littleBox.find("#" + e.target.id).css({
 								"background-color": "#" + color.val().substring(2)
 							});	
 						}else{
 							cell.css({
 								"background-color": "transparent"
 							});
-							littleBox.find(e.target.id).css({
+							littleBox.find("#" + e.target.id).css({
 									"background-color": "transparent"
 							});	
 						}
