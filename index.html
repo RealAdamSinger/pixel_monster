@@ -66,6 +66,31 @@
 				}
 			};
 			
+			var onClick = function(e) {
+						var el = store[e.target.id];
+						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
+							el[0].css({
+								"background-color": "#" + color.val().substring(2)
+							});	
+							el[1].css({
+								"background-color": "#" + color.val().substring(2)
+							});	
+							el[2].css({
+								"background-color": "#" + color.val().substring(2)
+							});	
+						}else{
+							el[0].css({
+								"background-color": "transparent"
+							});
+							el[1].css({
+									"background-color": "transparent"
+							});
+							el[2].css({
+									"background-color": "transparent"
+							});	
+						}
+					};
+			
 			var screenHeight = screen.height;
 			var monsterBox = $("body").find("#monsterBox");
 			var littleBox = $("body").find("#littleBox");
@@ -86,24 +111,7 @@
 					store[pos][1].appendTo(littleBox);
 					store[pos][2].appendTo(littleBoxBW);
 					
-					store[pos][0].click(function(e) {
-						var el = store[e.target.id];
-						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
-							el[0].css({
-								"background-color": "#" + color.val().substring(2)
-							});	
-							el[1].css({
-								"background-color": "#" + color.val().substring(2)
-							});	
-						}else{
-							el[0].css({
-								"background-color": "transparent"
-							});
-							el[1].first().css({
-									"background-color": "transparent"
-							});	
-						}
-					});
+					store[pos][0].click(onClick);
 				}	
 				monsterBox.append("</br>");
 				littleBox.append("</br>");
