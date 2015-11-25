@@ -76,7 +76,8 @@
 			for(var y=0; y<60; y++){
 				for(var x=0; x<60; x++){	
 					var pos = "x"+ x +"y"+ y;
-								
+					
+					store[pos]=[];			
 					store[pos].push($("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>"));
 					store[pos].push($("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>"));
 					store[pos].push($("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>"));
