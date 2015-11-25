@@ -62,5 +62,5 @@ footer, header, hgroup, menu, nav, section {
   background:#222;
 }
 .item-styled-color {
-  background:none;
+  background:none !important;
 }
