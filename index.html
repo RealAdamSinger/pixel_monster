@@ -71,26 +71,30 @@
 			var littleBox = $("body").find("#littleBox");
 			var littleBoxBW = $("body").find("#littleBoxBW");
 			var color = $("body").find("#color");
+			var store = {};
+			
 			for(var y=0; y<60; y++){
 				for(var x=0; x<60; x++){	
 					var pos = "x"+ x +"y"+ y;
 					monsterBox.append("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>");
 					littleBox.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>");
 					littleBoxBW.append("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>");
+					store[pos]=[monsterBox.last(), littleBox.last(), littleBoxBW.last()];
+					
 					monsterBox.find("#"+pos).click(function(e) {
-						var cell = $(e.target);
-						if(cell.css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
-							cell.css({
+						var el = store[e.target.id];
+						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
+							el[0].css({
 								"background-color": "#" + color.val().substring(2)
 							});	
-							littleBox.children("#" + e.target.id).first().css({
+							el[1].css({
 								"background-color": "#" + color.val().substring(2)
 							});	
 						}else{
-							cell.css({
+							el[0].css({
 								"background-color": "transparent"
 							});
-							littleBox.children("#" + e.target.id).first().css({
+							el[1].first().css({
 									"background-color": "transparent"
 							});	
 						}
