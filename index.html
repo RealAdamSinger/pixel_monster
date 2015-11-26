@@ -65,9 +65,9 @@
 					}
 				}
 			};
-			
-			var onClick = function(e) {
-						var el = store[e.target.id];
+			var pressed = false;
+			var draw = function(e){
+				var el = store[e.target.id];
 						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
 							el[0].css({
 								"background-color": "#" + color.val().substring(2)
@@ -89,8 +89,21 @@
 									"background-color": "transparent"
 							});	
 						}
-					};
-			
+			};
+			var mousedown = function(e) {
+				if(!pressed){				
+					draw(e);
+					pressed = true;
+				}				
+			};
+			var mouseup = function(e){
+				pressed = false;
+			};
+			var mouseenter = function(e){
+				if(pressed){
+					draw(e);
+				}
+			};
 			var screenHeight = screen.height;
 			var monsterBox = $("body").find("#monsterBox");
 			var littleBox = $("body").find("#littleBox");
@@ -113,7 +126,9 @@
 					store[pos][1].appendTo(littleBox);
 					store[pos][2].appendTo(littleBoxBW);
 					
-					store[pos][0].mousedown(onClick);
+					store[pos][0].mousedown(mousedown);
+					store[pos][0].mouseup(mouseup);
+					store[pos][0].mouseenter(mouseenter);
 				}	
 				monsterBox.append("</br>");
 				littleBox.append("</br>");
