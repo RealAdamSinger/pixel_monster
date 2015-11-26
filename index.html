@@ -98,20 +98,22 @@
 			var color = $("body").find("#color");
 			var store = {};
 			
-			for(var y=0; y<60; y++){
-				for(var x=0; x<60; x++){	
+			var level = 5;
+			var pixels = Math.pow(2, level); 
+			for(var y=0; y<pixels; y++){
+				for(var x=0; x<pixels; x++){	
 					var pos = "x"+ x +"y"+ y;
 					
 					store[pos]=[];			
-					store[pos].push($("<div id='" + pos + "' style='width:40px; height:40px; display:inline-block;vertical-align:top;'></div>"));
-					store[pos].push($("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>"));
-					store[pos].push($("<div id='" + pos + "' style='width:1px; height:1px; display:inline-block;vertical-align:top;line-height:0;'></div>"));
+					store[pos].push($("<div id='" + pos + "' class='box40px'></div>"));
+					store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
+					store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
 					
 					store[pos][0].appendTo(monsterBox);
 					store[pos][1].appendTo(littleBox);
 					store[pos][2].appendTo(littleBoxBW);
 					
-					store[pos][0].click(onClick);
+					store[pos][0].mousedown(onClick);
 				}	
 				monsterBox.append("</br>");
 				littleBox.append("</br>");
@@ -128,3 +130,75 @@
 </body>
 
 </html>
+
+
+<!--var onClick = function(id) {
+						var el = store[id];
+						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
+							el[0].css({
+								"background-color": "#" + color.val().substring(2)
+							});	
+							el[1].css({
+								"background-color": "#" + color.val().substring(2)
+							});	
+							el[2].css({
+								"background-color": "#" + color.val().substring(2)
+							});	
+						}else{
+							el[0].css({
+								"background-color": "transparent"
+							});
+							el[1].css({
+									"background-color": "transparent"
+							});
+							el[2].css({
+									"background-color": "transparent"
+							});	
+						}
+					};
+			
+			var screenHeight = screen.height;
+			var monsterBox = $("body").find("#monsterBox");
+			var littleBox = $("body").find("#littleBox");
+			var littleBoxBW = $("body").find("#littleBoxBW");
+			var color = $("body").find("#color");
+			var store = {};
+			
+			for(var y=0; y<10; y++){
+				for(var x=0; x<10; x++){
+					var scope = function(x,y){
+						var pos = "x"+ x +"y"+ y;					
+						store[pos]=[];			
+						store[pos].push($("<div id='" + pos + "' class='box40px'></div>"));
+						store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
+						store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
+						
+						store[pos][0].appendTo(monsterBox);
+						store[pos][1].appendTo(littleBox);
+						store[pos][2].appendTo(littleBoxBW);
+						
+						
+						// store[pos][0].touchdown(onClick);	
+					}(x,y)			
+				}	
+				monsterBox.append("</br>");
+				littleBox.append("</br>");
+				littleBoxBW.append("</br>");
+			}
+			monsterBox.mousedown(function(e){
+				var offset = {
+					x: e.offsetX,
+					y: e.offsetY
+				};
+				var offset = {
+					x: e.originalEvent.layerX + monsterBox.parent().scrollLeft(),
+					y: e.originalEvent.layerY + monsterBox.parent().scrollTop()
+				};
+				var id = "x"+ Math.floor(offset.x/40) +"y"+ Math.floor(offset.y/40);	
+				onClick(id);
+			});
+			
+				$("body").find('#main').css({ height: ($(window).innerHeight())});
+				$(window).resize(function(){
+					$("body").find('#main').css({ height: ($(window).innerHeight())});
+				});-->

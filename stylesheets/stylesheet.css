@@ -28,7 +28,19 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-
+.box40px{
+  width:40px;
+  height:40px;
+  display:inline-block;
+  vertical-align:top;
+}
+.box1px{
+  width:2px; 
+  height:2px; 
+  display:inline-block;
+  vertical-align:top;
+  line-height:0;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
