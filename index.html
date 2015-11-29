@@ -48,17 +48,17 @@
 		</div>
 		<script>
 			var pressed = false;
-			
+
 			var canvas1 = $("body").find("#littleBox")[0];
 			var ctx1 = canvas1.getContext("2d");
 			var w = canvas1.width;
 			var h = canvas1.height;
 			var canvasData1 = ctx1.getImageData(0, 0, w, h);
-			
+
 			var canvas2 = $("body").find("#littleBoxBW")[0];
 			var ctx2 = canvas2.getContext("2d");
 			var canvasData2 = ctx2.getImageData(0, 0, w, h);
-			
+
 			// That's how you define the value of a pixel //
 			function drawPixel (canvasData, x, y, r, g, b, a) {
 				var index = (parseInt(x) + parseInt(y) * parseInt(w)) * 4;
@@ -73,23 +73,23 @@
 				ctx1.putImageData(canvasData1, 0, 0);
 				ctx2.putImageData(canvasData2, 0, 0);
 			}
-			
-			
+
+
 			var draw = function(e, x, y, rgb){
 				var el = store[e.target.id];
 						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
 							el[0].css({
 								"background-color": "#" + color.val().substring(2)
 							});
-							
-							drawPixel(canvasData1, x, y, rgb[0], rgb[1], rgb[2], 255);	
-							drawPixel(canvasData2, x, y, rgb[0], rgb[1], rgb[2], 255);							
+
+							drawPixel(canvasData1, x, y, rgb[0], rgb[1], rgb[2], 255);
+							drawPixel(canvasData2, x, y, rgb[0], rgb[1], rgb[2], 255);
 							updateCanvas();
 						}else{
 							el[0].css({
 								"background-color": "transparent"
 							});
-							drawPixel(canvasData1, x, y, 255, 0, 0, 0);	
+							drawPixel(canvasData1, x, y, 255, 0, 0, 0);
 							drawPixel(canvasData2, x, y, 255, 0, 0, 0);
 						}
 			};
@@ -97,12 +97,13 @@
 				if(!pressed){
 					draw(e, x, y, $("body").find(".value").css("backgroundColor").replace(/[^\d,]/g, '').split(','));
 					pressed = true;
-				}				
+				}
 			};
 			var mouseup = function(e){
 				pressed = false;
 			};
 			var mouseenter = function(e, x, y){
+				console.error(pressed);
 				if(pressed){
 					draw(e, x, y, $("body").find(".value").css("backgroundColor").replace(/[^\d,]/g, '').split(','));
 				}
@@ -111,31 +112,34 @@
 			var monsterBox = $("body").find("#monsterBox");
 			var color = $("body").find("#color");
 			var store = {};
-			
+
 			var level = 5;
 			var pixels = 60;
-			
+
 			for(var y=0; y<pixels; y++){
-				for(var x=0; x<pixels; x++){ 
-					var scope = function(x,y){	
-						var pos = "x"+ x +"y"+ y;						
-						store[pos]=[];			
-						store[pos].push($("<div x = '"+ x +"'  y = '"+ y +"' id='" + pos + "' class='box40px'></div>"));						
-						
-						store[pos][0].appendTo(monsterBox);			
+				for(var x=0; x<pixels; x++){
+					var scope = function(x,y){
+						var pos = "x"+ x +"y"+ y;
+						store[pos]=[];
+						store[pos].push($("<div x = '"+ x +"'  y = '"+ y +"' id='" + pos + "' class='box40px'></div>"));
+
+						store[pos][0].appendTo(monsterBox);
+
+						store[pos][0].mouseenter(function(e){
+							mouseenter(e, x, y);
+						});
+
 					}(x,y)
 				}
 				monsterBox.append("</br>");
 			}
-				
+
 			monsterBox.mousedown(function(e){
 				mousedown(e, e.target.getAttribute("x"), e.target.getAttribute("y"));
 			});
 			monsterBox.mouseup(mouseup);
-			monsterBox.mouseenter(function(e){
-				mouseenter(e, e.target.getAttribute("x"), e.target.getAttribute("y"));
-			});
-			
+
+
 				$("body").find('#main').css({ height: ($(window).innerHeight())});
 				$(window).resize(function(){
 					$("body").find('#main').css({ height: ($(window).innerHeight())});
@@ -152,13 +156,13 @@
 						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
 							el[0].css({
 								"background-color": "#" + color.val().substring(2)
-							});	
+							});
 							el[1].css({
 								"background-color": "#" + color.val().substring(2)
-							});	
+							});
 							el[2].css({
 								"background-color": "#" + color.val().substring(2)
-							});	
+							});
 						}else{
 							el[0].css({
 								"background-color": "transparent"
@@ -168,34 +172,34 @@
 							});
 							el[2].css({
 									"background-color": "transparent"
-							});	
+							});
 						}
 					};
-			
+
 			var screenHeight = screen.height;
 			var monsterBox = $("body").find("#monsterBox");
 			var littleBox = $("body").find("#littleBox");
 			var littleBoxBW = $("body").find("#littleBoxBW");
 			var color = $("body").find("#color");
 			var store = {};
-			
+
 			for(var y=0; y<10; y++){
 				for(var x=0; x<10; x++){
 					var scope = function(x,y){
-						var pos = "x"+ x +"y"+ y;					
-						store[pos]=[];			
+						var pos = "x"+ x +"y"+ y;
+						store[pos]=[];
 						store[pos].push($("<div id='" + pos + "' class='box40px'></div>"));
 						store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
 						store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
-						
+
 						store[pos][0].appendTo(monsterBox);
 						store[pos][1].appendTo(littleBox);
 						store[pos][2].appendTo(littleBoxBW);
-						
-						
-						// store[pos][0].touchdown(onClick);	
-					}(x,y)			
-				}	
+
+
+						// store[pos][0].touchdown(onClick);
+					}(x,y)
+				}
 				monsterBox.append("</br>");
 				littleBox.append("</br>");
 				littleBoxBW.append("</br>");
@@ -209,10 +213,10 @@
 					x: e.originalEvent.layerX + monsterBox.parent().scrollLeft(),
 					y: e.originalEvent.layerY + monsterBox.parent().scrollTop()
 				};
-				var id = "x"+ Math.floor(offset.x/40) +"y"+ Math.floor(offset.y/40);	
+				var id = "x"+ Math.floor(offset.x/40) +"y"+ Math.floor(offset.y/40);
 				onClick(id);
 			});
-			
+
 				$("body").find('#main').css({ height: ($(window).innerHeight())});
 				$(window).resize(function(){
 					$("body").find('#main').css({ height: ($(window).innerHeight())});
