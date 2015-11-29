@@ -20,15 +20,15 @@
 			<h1 id="project_title" style="color: #eee; display:inline-block; height:100%; padding:3px; vertical-align:middle; font-weight:bold;">Pixel</br>Monster</h1>
 			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:middle;line-height:0;">
 				<div style="border: 5px solid #222;display:inline-block;line-height:0;">
-					<div id="littleBox" style="border: 1px solid #aaa;display:inline-block; white-space:nowrap; background:#ccc; line-height:0;">
-					</div>
+					<canvas id="littleBox" width="60px" height= "60px" style="border: 1px solid #aaa;display:inline-block;">
+					</canvas>
 				</div>
 			</div>
 			&nbsp;
 			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:middle;line-height:0;">
 				<div style="border: 5px solid #222;display:inline-block;line-height:0;">
-					<div id="littleBoxBW" style="border: 1px solid #aaa;display:inline-block; white-space:nowrap; background:#ccc;line-height:0;">
-					</div>
+					<canvas id="littleBoxBW" width="60px" height= "60px" style="border: 1px solid #aaa;display:inline-block;">
+					</canvas>
 				</div>
 			</div>
 			<div style="width:90%; height: 100%; position:absolute; color: #eee; text-align: right; right:10px; top:0px; padding-right:8px;">
@@ -47,94 +47,94 @@
 			</div>
 		</div>
 		<script>
-			$.cssHooks.backgroundColor = {
-				get: function(elem) {
-					if (elem.currentStyle){
-						var bg = elem.currentStyle["backgroundColor"];
-					} else if (window.getComputedStyle){
-						var bg = document.defaultView.getComputedStyle(elem, null).getPropertyValue("background-color");
-					}
-					if (bg.search("rgb") == -1 || bg.search("rgba") != -1)
-						return bg;
-					else {
-						bg = bg.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-						function hex(x) {
-							return ("0" + parseInt(x).toString(16)).slice(-2);
-						}
-						return "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
-					}
-				}
-			};
 			var pressed = false;
-			var draw = function(e){
+			
+			var canvas1 = $("body").find("#littleBox")[0];
+			var ctx1 = canvas1.getContext("2d");
+			var w = canvas1.width;
+			var h = canvas1.height;
+			var canvasData1 = ctx1.getImageData(0, 0, w, h);
+			
+			var canvas2 = $("body").find("#littleBoxBW")[0];
+			var ctx2 = canvas2.getContext("2d");
+			var canvasData2 = ctx2.getImageData(0, 0, w, h);
+			
+			// That's how you define the value of a pixel //
+			function drawPixel (canvasData, x, y, r, g, b, a) {
+				var index = (parseInt(x) + parseInt(y) * parseInt(w)) * 4;
+				canvasData.data[index + 0] = r;
+				canvasData.data[index + 1] = g;
+				canvasData.data[index + 2] = b;
+				canvasData.data[index + 3] = a;
+			}
+			// That's how you update the canvas, so that your //
+			// modification are taken in consideration //
+			function updateCanvas() {
+				ctx1.putImageData(canvasData1, 0, 0);
+				ctx2.putImageData(canvasData2, 0, 0);
+			}
+			
+			
+			var draw = function(e, x, y, rgb){
 				var el = store[e.target.id];
 						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
 							el[0].css({
 								"background-color": "#" + color.val().substring(2)
-							});	
-							el[1].css({
-								"background-color": "#" + color.val().substring(2)
-							});	
-							el[2].css({
-								"background-color": "#" + color.val().substring(2)
-							});	
+							});
+							
+							drawPixel(canvasData1, x, y, rgb[0], rgb[1], rgb[2], 255);	
+							drawPixel(canvasData2, x, y, rgb[0], rgb[1], rgb[2], 255);							
+							updateCanvas();
 						}else{
 							el[0].css({
 								"background-color": "transparent"
 							});
-							el[1].css({
-									"background-color": "transparent"
-							});
-							el[2].css({
-									"background-color": "transparent"
-							});	
+							drawPixel(canvasData1, x, y, 255, 0, 0, 0);	
+							drawPixel(canvasData2, x, y, 255, 0, 0, 0);
 						}
 			};
-			var mousedown = function(e) {
-				if(!pressed){				
-					draw(e);
+			var mousedown = function(e, x, y) {
+				if(!pressed){
+					draw(e, x, y, $("body").find(".value").css("backgroundColor").replace(/[^\d,]/g, '').split(','));
 					pressed = true;
 				}				
 			};
 			var mouseup = function(e){
 				pressed = false;
 			};
-			var mouseenter = function(e){
+			var mouseenter = function(e, x, y){
 				if(pressed){
-					draw(e);
+					draw(e, x, y, $("body").find(".value").css("backgroundColor").replace(/[^\d,]/g, '').split(','));
 				}
 			};
 			var screenHeight = screen.height;
 			var monsterBox = $("body").find("#monsterBox");
-			var littleBox = $("body").find("#littleBox");
-			var littleBoxBW = $("body").find("#littleBoxBW");
 			var color = $("body").find("#color");
 			var store = {};
 			
 			var level = 5;
-			var pixels = Math.pow(2, level); 
-			for(var y=0; y<pixels; y++){
-				for(var x=0; x<pixels; x++){	
-					var pos = "x"+ x +"y"+ y;
-					
-					store[pos]=[];			
-					store[pos].push($("<div id='" + pos + "' class='box40px'></div>"));
-					store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
-					store[pos].push($("<div id='" + pos + "' class='box1px'></div>"));
-					
-					store[pos][0].appendTo(monsterBox);
-					store[pos][1].appendTo(littleBox);
-					store[pos][2].appendTo(littleBoxBW);
-					
-					store[pos][0].mousedown(mousedown);
-					store[pos][0].mouseup(mouseup);
-					store[pos][0].mouseenter(mouseenter);
-				}	
-				monsterBox.append("</br>");
-				littleBox.append("</br>");
-				littleBoxBW.append("</br>");
-			}
+			var pixels = 60;
 			
+			for(var y=0; y<pixels; y++){
+				for(var x=0; x<pixels; x++){ 
+					var scope = function(x,y){	
+						var pos = "x"+ x +"y"+ y;						
+						store[pos]=[];			
+						store[pos].push($("<div x = '"+ x +"'  y = '"+ y +"' id='" + pos + "' class='box40px'></div>"));						
+						
+						store[pos][0].appendTo(monsterBox);			
+					}(x,y)
+				}
+				monsterBox.append("</br>");
+			}
+				
+			monsterBox.mousedown(function(e){
+				mousedown(e, e.target.getAttribute("x"), e.target.getAttribute("y"));
+			});
+			monsterBox.mouseup(mouseup);
+			monsterBox.mouseenter(function(e){
+				mouseenter(e, e.target.getAttribute("x"), e.target.getAttribute("y"));
+			});
 			
 				$("body").find('#main').css({ height: ($(window).innerHeight())});
 				$(window).resize(function(){
