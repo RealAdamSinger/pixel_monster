@@ -20,14 +20,14 @@
 			<h1 id="project_title" style="color: #eee; display:inline-block; height:100%; padding:3px; vertical-align:middle; font-weight:bold;">Pixel</br>Monster</h1>
 			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:middle;line-height:0;">
 				<div style="border: 5px solid #222;display:inline-block;line-height:0;">
-					<canvas id="littleBox" width="60px" height= "60px" style="border: 1px solid #aaa;display:inline-block;">
+					<canvas id="littleBox" width="60px" height= "60px" style="border: 1px solid #aaa;display:inline-block; background-color:#ccc;">
 					</canvas>
 				</div>
 			</div>
 			&nbsp;
-			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:middle;line-height:0;">
+			<div style="border: 1px solid #aaa;display:inline-block;vertical-align:middle;line-height:0; ">
 				<div style="border: 5px solid #222;display:inline-block;line-height:0;">
-					<canvas id="littleBoxBW" width="60px" height= "60px" style="border: 1px solid #aaa;display:inline-block;">
+					<canvas id="littleBoxBW" width="60px" height= "60px" style="border: 1px solid #aaa;display:inline-block; background-color:#ccc;">
 					</canvas>
 				</div>
 			</div>
@@ -77,14 +77,13 @@
 
 			var draw = function(e, x, y, rgb){
 				var el = store[e.target.id];
-						if(el[0].css("background-color").toLowerCase() != ("#" + color.val().substring(2)).toLowerCase()){
+						if(el[0].css("background-color").toLowerCase() != ("rgb("+ rgb[0] +", "+ rgb[1] + ", "+ rgb[2] + ")").toLowerCase()){
 							el[0].css({
 								"background-color": "#" + color.val().substring(2)
 							});
 
 							drawPixel(canvasData1, x, y, rgb[0], rgb[1], rgb[2], 255);
-							drawPixel(canvasData2, x, y, rgb[0], rgb[1], rgb[2], 255);
-							updateCanvas();
+							drawPixel(canvasData2, x, y, rgb[0], rgb[1], rgb[2], 255);							
 						}else{
 							el[0].css({
 								"background-color": "transparent"
@@ -92,6 +91,7 @@
 							drawPixel(canvasData1, x, y, 255, 0, 0, 0);
 							drawPixel(canvasData2, x, y, 255, 0, 0, 0);
 						}
+						updateCanvas();
 			};
 			var mousedown = function(e, x, y) {
 				if(!pressed){
